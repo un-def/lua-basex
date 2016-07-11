@@ -5,6 +5,14 @@ Base encoding/decoding of any given alphabet using bitcoin style leading zero co
 
 
 
+### Installation
+
+```
+$ luarocks install lua-basex
+```
+
+
+
 ### Dependencies
 
 lua-basex has no dependencies (except, of course, Lua).

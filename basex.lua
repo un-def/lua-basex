@@ -1,3 +1,7 @@
+-- lua-basex
+-- version 0.1.0
+-- un.def, 2016
+
 local basex_meta = {
   __index = {
     encode = function(self, source)
