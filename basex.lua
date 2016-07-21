@@ -2,7 +2,42 @@
 -- version 0.1.1
 -- un.def, 2016
 
-local instance_meta = {
+local basex, basex_meta, basex_instance_meta
+
+
+basex = {
+  BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+}
+
+
+basex_meta = {
+  __call = function(_, alphabet)
+    local alphabet_map = {}
+    local base = #alphabet
+    local leader = alphabet:sub(1, 1)
+    for i = 1, base do
+      alphabet_map[alphabet:sub(i, i)] = i - 1
+    end
+    local basex_instance = {
+      alphabet = alphabet,
+      base = base,
+      leader = leader,
+      alphabet_map = alphabet_map,
+    }
+    return setmetatable(basex_instance, basex_instance_meta)
+  end,
+
+  __index = function(cls, key)
+    local alphabet = rawget(cls, key:upper())
+    if not alphabet then return nil end
+    local basex_instance = cls(alphabet)
+    cls[key] = basex_instance
+    return basex_instance
+  end
+}
+
+
+basex_instance_meta = {
   __index = {
     encode = function(self, source)
       if #source == 0 then return '' end
@@ -79,23 +114,4 @@ local instance_meta = {
 }
 
 
-local basex_meta = {
-  __call = function(_, alphabet)
-    local alphabet_map = {}
-    local base = #alphabet
-    local leader = alphabet:sub(1, 1)
-    for i = 1, base do
-      alphabet_map[alphabet:sub(i, i)] = i - 1
-    end
-    local instance = {
-      alphabet = alphabet,
-      base = base,
-      leader = leader,
-      alphabet_map = alphabet_map,
-    }
-    return setmetatable(instance, instance_meta)
-  end
-}
-
-
-return setmetatable({}, basex_meta)
+return setmetatable(basex, basex_meta)

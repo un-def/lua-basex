@@ -23,7 +23,11 @@ local base
 print('\ntest valid values\n-----------------\n')
 local bytes, encoded, decoded
 for i, v in pairs(fixtures.valid) do
-  base = basex(fixtures.alphabets[v.alphabet])
+  if v.alphabet == 'base58' then
+    base = basex.base58
+  else
+    base = basex(fixtures.alphabets[v.alphabet])
+  end
   bytes = tobytes(v.hex)
   print(i, v.alphabet, v.hex)
   encoded = base:encode(bytes)
