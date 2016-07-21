@@ -1,8 +1,8 @@
 -- lua-basex
--- version 0.1.0
+-- version 0.1.1
 -- un.def, 2016
 
-local basex_meta = {
+local instance_meta = {
   __index = {
     encode = function(self, source)
       if #source == 0 then return '' end
@@ -79,21 +79,23 @@ local basex_meta = {
 }
 
 
-local function basex(alphabet)
-  local alphabet_map = {}
-  local base = #alphabet
-  local leader = alphabet:sub(1, 1)
-  for i = 1, base do
-    alphabet_map[alphabet:sub(i, i)] = i - 1
+local basex_meta = {
+  __call = function(_, alphabet)
+    local alphabet_map = {}
+    local base = #alphabet
+    local leader = alphabet:sub(1, 1)
+    for i = 1, base do
+      alphabet_map[alphabet:sub(i, i)] = i - 1
+    end
+    local instance = {
+      alphabet = alphabet,
+      base = base,
+      leader = leader,
+      alphabet_map = alphabet_map,
+    }
+    return setmetatable(instance, instance_meta)
   end
-  local instance = {
-    alphabet = alphabet,
-    base = base,
-    leader = leader,
-    alphabet_map = alphabet_map,
-  }
-  return setmetatable(instance, basex_meta)
-end
+}
 
 
-return basex
+return setmetatable({}, basex_meta)
