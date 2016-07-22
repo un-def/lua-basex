@@ -24,16 +24,15 @@ describe("test valid", function()
     local base
 
     before_each(function()
-      base = basex[v.alphabet] or basex(fixtures.alphabets[v.alphabet])
+      base = basex(fixtures.alphabets[v.alphabet])
     end)
 
-    it(("encode '%s' using '%s'"):format(v.hex, v.alphabet), function()
-      local bytes = tobytes(v.hex)
-      local encoded = base:encode(bytes)
+    it(("encoding '%s' using '%s'"):format(v.hex, v.alphabet), function()
+      local encoded = base:encode(tobytes(v.hex))
       assert.equal(v.string, encoded)
     end)
 
-    it(("decode '%s' using '%s'"):format(v.string, v.alphabet), function()
+    it(("decoding '%s' using '%s'"):format(v.string, v.alphabet), function()
       local decoded = base:decode(v.string)
       assert.equal(v.hex, tohexstring(decoded))
     end)
@@ -45,13 +44,48 @@ end)
 describe("test invalid", function()
   for _, v in pairs(fixtures.invalid) do
 
-    it(("decode '%s' (%s) using '%s'"):format(v.string,
+    it(("decoding '%s' (%s) using '%s'"):format(v.string,
                                               v.description,
                                               v.alphabet), function()
-      local base = basex[v.alphabet] or basex(fixtures.alphabets[v.alphabet])
+      local base = basex(fixtures.alphabets[v.alphabet])
       assert.has_error(function() base:decode(v.string) end,
                        'Non-' .. v.alphabet .. ' character')
     end)
+
+  end
+end)
+
+
+describe("test predefined codec", function()
+  for _, c in ipairs(fixtures.predefined) do
+
+    before_each(function()
+      package.loaded.basex = nil
+      basex = require('basex')
+    end)
+
+    it(("'%s' is instantiated lazily"):format(c), function()
+      assert.is_nil(rawget(basex, c))
+      local _ = basex[c]
+      assert.is_table(rawget(basex, c))
+    end)
+
+    it("'%s' is created only once", function()
+      local basex_instance = basex[c]
+      assert.is_table(basex_instance)
+      assert.equal(basex_instance, basex[c])
+      assert.equal(basex_instance, basex[c])
+    end)
+
+    for _, v in pairs(fixtures.valid) do
+      if v.alphabet == c then
+        it(("'%s' encodes '%s'"):format(c, v.hex), function()
+          local base = basex[v.alphabet]
+          local encoded = base:encode(tobytes(v.hex))
+          assert.equal(v.string, encoded)
+        end)
+      end
+    end
 
   end
 end)

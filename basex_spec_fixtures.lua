@@ -577,4 +577,6 @@ return {
     }
   },
 
+  predefined = {'base58'},
+
 }
