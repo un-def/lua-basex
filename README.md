@@ -1,5 +1,5 @@
 lua-basex
-===========================================================
+=========
 
 Base encoding/decoding of any given alphabet using bitcoin style leading zero compression. This is a Lua implementation of [base-x](https://github.com/cryptocoinjs/base-x).
 
@@ -25,7 +25,7 @@ Tested with Lua 5.1, 5.2, and 5.3.
 
 
 
-### Example
+### Examples
 
 ```lua
 local basex = require('basex')
@@ -49,3 +49,22 @@ decoded = base2:decode(encoded)
 print(decoded:byte(1, 2))
 --> 0      255
 ```
+
+There are a bunch of predefined encoders/decoders:
+
+* base16lower
+* base16upper
+* base58bitcoin
+* base58flickr
+* base58ripple
+
+So, the first example can be rewritten as follows:
+
+```lua
+local basex = require('basex')
+
+local decoded = basex.base58bitcoin:decode('5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr')
+local encoded = basex.base58bitcoin:encode(decoded)
+```
+
+An alphabet for any `basex.baseXvariant` predefined encoder/decoder is available as `basex.alphabets.BASEXVARIANT` (e.g., `basex.alphabets.BASE58BITCOIN`).
