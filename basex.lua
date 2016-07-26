@@ -2,11 +2,16 @@
 -- version 0.1.1
 -- un.def, 2016
 
-local basex, basex_meta, basex_instance_meta
+local basex, alphabets, basex_meta, basex_instance_meta
 
+alphabets = {
+  BASE58BITCOIN = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
+  BASE58FLICKR = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ',
+  BASE58RIPPLE = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz',
+}
 
 basex = {
-  BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+  alphabets = alphabets,
 }
 
 
@@ -28,7 +33,7 @@ basex_meta = {
   end,
 
   __index = function(cls, key)
-    local alphabet = rawget(cls, key:upper())
+    local alphabet = cls.alphabets[key:upper()]
     if not alphabet then return nil end
     local basex_instance = cls(alphabet)
     cls[key] = basex_instance
