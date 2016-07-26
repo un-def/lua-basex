@@ -5,6 +5,8 @@
 local basex, alphabets, basex_meta, basex_instance_meta
 
 alphabets = {
+  BASE16LOWER = '0123456789abcdef',
+  BASE16UPPER = '0123456789ABCDEF',
   BASE58BITCOIN = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz',
   BASE58FLICKR = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ',
   BASE58RIPPLE = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz',

@@ -2,7 +2,7 @@ return {
 
   alphabets = {
     base2 = '01',
-    base16 = '0123456789abcdef',
+    base16lower = '0123456789abcdef',
     base58bitcoin = '123456789ABCDEFGHJKLMNPQRSTUVWXYZ' ..
                     'abcdefghijkmnopqrstuvwxyz',
     base58flickr = '123456789abcdefghijkmnopqrstuvwxyz' ..
@@ -33,17 +33,17 @@ return {
       string = '11111111000000001111111100000000'
     },
     {
-      alphabet = 'base16',
+      alphabet = 'base16lower',
       hex = '0000000f',
       string = '000f'
     },
     {
-      alphabet = 'base16',
+      alphabet = 'base16lower',
       hex = '000fff',
       string = '0fff'
     },
     {
-      alphabet = 'base16',
+      alphabet = 'base16lower',
       hex = 'ffff',
       string = 'ffff'
     },
@@ -622,6 +622,7 @@ return {
     }
   },
 
-  predefined = {'base58bitcoin', 'base58flickr', 'base58ripple'},
+  predefined = {'base16lower', 'base16upper',
+                'base58bitcoin', 'base58flickr', 'base58ripple'},
 
 }
