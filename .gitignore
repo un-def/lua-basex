@@ -1,2 +1,4 @@
 example.lua
+lua-basex-*/
 *.rock
+*.tar.gz
