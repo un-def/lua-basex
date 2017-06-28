@@ -13,7 +13,7 @@ alphabets = {
 }
 
 basex = {
-  _VERSION = 'lua-basex 0.1.0',
+  _VERSION = 'lua-basex 0.1.1',
   _URL = 'https://github.com/un-def/lua-basex',
   _DESCRIPTION = 'Base encoding/decoding of any given alphabet ' ..
                  'using bitcoin style leading zero compression',

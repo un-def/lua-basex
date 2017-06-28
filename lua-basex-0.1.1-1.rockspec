@@ -1,8 +1,8 @@
 package = 'lua-basex'
-version = '0.1.0-1'
+version = '0.1.1-1'
 source = {
   url = 'git://github.com/un-def/lua-basex.git',
-  tag = '0.1.0',
+  tag = '0.1.1',
 }
 description = {
   summary = 'Base encoding/decoding of any given alphabet using bitcoin style leading zero compression',
