@@ -1,1 +1,1 @@
-globals = {'describe', 'it', 'before_each'}
+std = '+busted'

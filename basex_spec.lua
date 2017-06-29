@@ -48,8 +48,9 @@ describe("test invalid", function()
                                               v.description,
                                               v.alphabet), function()
       local base = basex(fixtures.alphabets[v.alphabet])
-      assert.has_error(function() base:decode(v.string) end,
-                       'Non-base' .. v.alphabet:match('%d+') .. ' character')
+      local decoded, err = base:decode(v.string)
+      assert.is_nil(decoded)
+      assert.equal(err, 'Non-base' .. v.alphabet:match('%d+') .. ' character')
     end)
 
   end

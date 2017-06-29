@@ -121,7 +121,9 @@ basex_instance_meta = {
       local value, carry
       for i = 1, #str do
         value = self.alphabet_map[str:sub(i, i)]
-        if value == nil then error('Non-base' .. self.base .. ' character') end
+        if value == nil then
+            return nil, 'Non-base' .. self.base .. ' character'
+        end
         carry = value
         for j = 1, #bytes do
           carry = carry + bytes[j] * self.base
