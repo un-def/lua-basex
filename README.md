@@ -10,6 +10,10 @@ Base encoding/decoding of any given alphabet using bitcoin style leading zero co
 ```
 $ luarocks install lua-basex
 ```
+or
+```
+$ opm get un-def/lua-basex
+```
 
 
 

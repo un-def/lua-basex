@@ -1,6 +1,6 @@
 -- lua-basex
--- version 0.1.1
--- un.def, 2016
+-- version 0.2.0
+-- un.def, 2016-2017
 
 local basex, alphabets, basex_meta, basex_instance_meta
 
@@ -13,12 +13,12 @@ alphabets = {
 }
 
 basex = {
-  _VERSION = '0.1.1',
+  _VERSION = '0.2.0',
   _URL = 'https://github.com/un-def/lua-basex',
   _DESCRIPTION = 'Base encoding/decoding of any given alphabet ' ..
                  'using bitcoin style leading zero compression',
   _LICENSE = [[
-    Copyright (c) 2016, un.def
+    Copyright (c) 2016-2017, un.def
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
