@@ -1,6 +1,8 @@
 lua-basex
 =========
 
+[![LuaRocks](https://img.shields.io/luarocks/v/undef/lua-basex.svg)](https://luarocks.org/modules/undef/lua-basex)
+
 Base encoding/decoding of any given alphabet using bitcoin style leading zero compression. This is a Lua implementation of [base-x](https://github.com/cryptocoinjs/base-x).
 
 
