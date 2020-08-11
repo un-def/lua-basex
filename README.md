@@ -1,37 +1,37 @@
-lua-basex
-=========
+# lua-basex
 
-[![LuaRocks](https://img.shields.io/luarocks/v/undef/lua-basex.svg)](https://luarocks.org/modules/undef/lua-basex)
+[![LuaRocks](https://img.shields.io/luarocks/v/undef/lua-basex?color=blue)](https://luarocks.org/modules/undef/lua-basex)
+[![OPM](https://img.shields.io/opm/v/un-def/lua-basex?color=blue)](https://opm.openresty.org/package/un-def/lua-basex/)
 
 Base encoding/decoding of any given alphabet using bitcoin style leading zero compression. This is a Lua implementation of [base-x](https://github.com/cryptocoinjs/base-x).
 
 
 
-### Installation
+## Installation
 
 ```
-$ luarocks install lua-basex
+luarocks install lua-basex
 ```
 or
 ```
-$ opm get un-def/lua-basex
+opm get un-def/lua-basex
 ```
 
 
 
-### Dependencies
+## Dependencies
 
 lua-basex has no dependencies (except, of course, Lua).
 
 
 
-### Compatibility
+## Compatibility
 
-Tested with Lua 5.1, 5.2, and 5.3.
+Tested with Lua 5.1, 5.2, 5.3, and 5.4.
 
 
 
-### Examples
+## Examples
 
 ```lua
 local basex = require('basex')
