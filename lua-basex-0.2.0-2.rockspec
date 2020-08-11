@@ -1,5 +1,5 @@
 package = 'lua-basex'
-version = '0.2.0-1'
+version = '0.2.0-2'
 source = {
   url = 'git://github.com/un-def/lua-basex.git',
   tag = '0.2.0',
@@ -11,7 +11,7 @@ description = {
   maintainer = 'un.def <un.def@ya.ru>',
 }
 dependencies = {
-  'lua >= 5.1, < 5.4',
+  'lua >= 5.1',
 }
 build = {
   type = 'builtin',
